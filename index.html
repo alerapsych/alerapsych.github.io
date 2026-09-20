@@ -114,6 +114,9 @@
       color: var(--white);
     }
 
+    .hero-badge { display: inline-flex; align-items: center; gap: 6px; background: var(--blush); color: var(--green-dark); font-size: 12px; letter-spacing: 0.15em; font-weight: 500; padding: 6px 16px; border-radius: 100px; margin-bottom: 1.5rem; }
+    .hero-badge::before { content: ''; display: inline-block; width: 6px; height: 6px; border-radius: 50%; background: var(--green-mid); }
+
     /* body copy */
     .body-text {
       font-size: clamp(14px, 2vw, 16px);
@@ -123,6 +126,119 @@
       /* max-width: 360px; */
       margin-bottom: 2.8rem;
       animation: up .7s ease .28s both;
+    }
+
+    /* psychologist profile */
+    .profile {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      max-width: 600px;
+      margin-bottom: 2.8rem;
+      animation: up .7s ease .32s both;
+    }
+
+    .profile-photo {
+      display: block;
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      object-fit: cover;
+      object-position: center top;
+      border: 3px solid #ffffffd9;
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.18);
+      margin-bottom: 1.3rem;
+      background: var(--green-mid);
+    }
+
+    .profile-name {
+      font-family: var(--font-display);
+      font-size: 1.5rem;
+      font-weight: 500;
+      color: var(--white);
+      margin-bottom: 0.25rem;
+    }
+
+    .profile-role {
+      font-size: 13px;
+      letter-spacing: 0.04em;
+      color: var(--white);
+      opacity: 0.8;
+      margin-bottom: 1rem;
+    }
+
+    .profile-bio {
+      font-size: clamp(14px, 2vw, 15px);
+      line-height: 1.75;
+      color: var(--white);
+      opacity: 0.65;
+      text-align: left;
+      /* collapsed: show 4 lines */
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 4;
+      line-clamp: 4;
+      overflow: hidden;
+    }
+
+    .profile-bio.is-open {
+      display: block;
+      -webkit-line-clamp: unset;
+      line-clamp: unset;
+      overflow: visible;
+    }
+
+    .profile-bio p + p {
+      margin-top: 0.8em;
+    }
+
+    .bio-toggle {
+      margin-top: 0.9rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: none;
+      border: 0;
+      padding: 4px 2px;
+      font-family: var(--font-body);
+      font-size: 13px;
+      letter-spacing: 0.04em;
+      color: var(--white);
+      cursor: pointer;
+    }
+
+    .bio-toggle svg {
+      transition: transform 0.25s ease;
+    }
+
+    .bio-toggle[aria-expanded="true"] svg {
+      transform: rotate(180deg);
+    }
+
+    .bio-toggle:hover {
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+
+    .bio-toggle:focus-visible {
+      outline: 2px solid var(--white);
+      outline-offset: 3px;
+      border-radius: 4px;
+    }
+
+    .bio-toggle[hidden] {
+      display: none;
+    }
+
+    .profile .hero-badge {
+      margin-top: 1.2rem;
+      margin-bottom: 0;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      * {
+        animation: none !important;
+      }
     }
 
     /* contact card */
@@ -191,6 +307,31 @@
       background: rgba(66, 87, 74, 0.08);
     }
 
+    .book-btn {
+      display: block;
+      width: 100%;
+      text-align: center;
+      text-decoration: none;
+      font-family: var(--font-body);
+      font-size: 14px;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      color: var(--white);
+      background: var(--green-dark);
+      padding: 14px 20px;
+      border-radius: 12px;
+      transition: background 0.2s;
+    }
+
+    .book-btn:hover {
+      background: var(--green-deep);
+    }
+
+    .book-btn:focus-visible {
+      outline: 2px solid var(--green-dark);
+      outline-offset: 3px;
+    }
+
     /* footer */
     footer {
       margin-top: 2.8rem;
@@ -236,6 +377,43 @@
     <p class="step-title">Our website is currently being developed.</p>
 
     <p class="body-text">In the meantime, please reach out. We'd love to hear from you.</p>
+
+    <div class="divider"></div>
+
+    <!-- Psychologist profile -->
+    <section class="profile">
+      <img src="images/deepak-singh.jpeg" alt="Portrait of Deepak Singh" class="profile-photo">
+      <h2 class="profile-name">Deepak Singh</h2>
+      <p class="profile-role">Director | Registered Psychologist</p>
+      <div class="profile-bio" id="bio">
+        <p>Dr. Singh provides therapy for children, adolescents, families, and young adults, as well as psychological assessment
+        for children, adolescents, and adults. He strives to create a warm, welcoming environment where clients feel
+        comfortable, understood, and at home.</p>
+        <p>Dr. Singh brings extensive clinical experience, specialized training, and a genuine curiosity about each person he works
+        with. He believes effective psychological care begins with trust and connection. His approach is collaborative,
+        flexible, and individualized, focusing on each client's strengths, experiences, relationships, and goals.</p>
+        <p>Dr. Singh has a particular passion for psychological assessment, viewing it as a puzzle in which each piece helps
+        explain how a person thinks, learns, feels, and functions. He assesses a variety of concerns, including but not limited
+        to ADHD, Learning Disabilities, Autism Spectrum Disorder, Intellectual Disability, Giftedness, anxiety, depression, OCD,
+        and trauma-related concerns.</p>
+        <p>In therapy, Dr. Singh uses evidence-based approaches including Cognitive Behavioural Therapy (CBT), Emotion-Focused
+        Family Therapy (EFFT), Acceptance and Commitment Therapy (ACT), Dialectical Behaviour Therapy (DBT), Interpersonal
+        Therapy, and play therapy. He works with anxiety, OCD, depression, ADHD, emotion regulation, life transitions, grief,
+        parent-child relationships, and behavioural difficulties. He believes therapy should be engaging and flexible. He gently
+        challenges clients while maintaining a supportive, trusting, and collaborative relationship.</p>
+        <p>Having spent 10 years living in India, Dr. Singh also brings a cross-cultural perspective to his work and strives to
+        provide an inclusive environment for individuals and families from diverse backgrounds. He is proficient in English,
+        Hindi, and Punjabi.</p>
+      </div>
+      <button type="button" class="bio-toggle" id="bio-toggle" aria-expanded="false" aria-controls="bio" hidden>
+        <span>Read more</span>
+        <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true">
+          <path d="M2 4.5L6 8.5L10 4.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+            stroke-linejoin="round" />
+        </svg>
+      </button>
+      <div class="hero-badge">Fee<b>$240 / hour</b></div>
+    </section>
 
     <!-- Contact card -->
     <div class="card">
@@ -285,11 +463,42 @@
         </div>
       </div>
 
+      <div class="card-divider"></div>
+
+      <!-- Replace the href with your Jane App booking link -->
+      <a href="https://alerapsychology.janeapp.com/locations/alera-psychology/book#/" class="book-btn" target="_blank" rel="noopener noreferrer">Book Now</a>
+
     </div>
 
     <footer>© 2026 Alera Psychology · Calgary, Alberta</footer>
 
   </main>
+
+  <script>
+    (function () {
+      var bio = document.getElementById('bio');
+      var btn = document.getElementById('bio-toggle');
+      if (!bio || !btn) return;
+      var label = btn.querySelector('span');
+
+      // Only show the button if the bio is actually cut off
+      function checkOverflow() {
+        if (bio.classList.contains('is-open')) return;
+        btn.hidden = !(bio.scrollHeight > bio.clientHeight + 1);
+      }
+
+      btn.addEventListener('click', function () {
+        var open = bio.classList.toggle('is-open');
+        btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+        label.textContent = open ? 'Read less' : 'Read more';
+      });
+
+      window.addEventListener('load', checkOverflow);
+      window.addEventListener('resize', checkOverflow);
+      if (document.fonts && document.fonts.ready) document.fonts.ready.then(checkOverflow);
+      checkOverflow();
+    })();
+  </script>
 
 </body>
 
